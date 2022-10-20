@@ -1,0 +1,20 @@
+[
+    {
+        "Clave": " $claveUsuario ",
+        "Correo": " $eMailCliente ",
+        "Nit": "$nitCliente",
+        "Nombre": " $nombreCliente ",
+        "Usuario": " $nombreUsuario ",
+        "direccion": " $direccionCliente ",
+        "lista Instancias": [
+            {
+                "Estado": " $estado ",
+                "Fecha Final": " $descripcionFecha ",
+                "Fecha Inicio": " $descripcionFecha ",
+                "ID CONFIGURACION": " $idConfiguracion ",
+                "ID instancia": "idInstancia",
+                "Nombre": " $nombreInstancia "
+            }
+        ]
+    }
+]

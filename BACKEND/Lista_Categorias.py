@@ -9,23 +9,24 @@ class Categorias():
         self.cargaTrabajo=cargaTrabajo
         self.lista_configuraciones= []
 
-    def addListaConfig(self,s):
+    def addListaConfig(self,idConfiguracion, nombre, descripcion):
         nuevo = Configuraciones(idConfiguracion, nombre, descripcion)
         self.lista_configuraciones.append(nuevo)
 
-    def obtenerListaConfig():
+    def obtenerListaConfig(self):
         json = []
         for config in self.lista_configuraciones:
-            config = {
-                'idConfiguracion': config.lista_configuraciones,
+            config2 = {
+                'idConfiguracion': config.idConfiguracion,
                 
-                'Nombre': config.lista_configuraciones,
-                "descripcion": config.lista_configuraciones,
-                #"Recurso": config.obtenerRecursosConfig()
+                'Nombre': config.nombre,
+                "descripcion": config.descripcion,
+                "Recursos Configuracion": config.obtenerRecursosConfig()
+                
                 
 
             }
-            json.append(config)
+            json.append(config2)
 
         return json    
 

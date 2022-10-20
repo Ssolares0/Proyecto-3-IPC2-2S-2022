@@ -8,6 +8,7 @@
             <tipo> $tipoRecurso </tipo>
             <valorXhora> valorNumerico </valorXhora>
         </recurso>
+        
     </listaRecursos>
     <listaCategorias>
         <categoria id="$idCateoria">
@@ -25,6 +26,22 @@
                 </configuracion>
             </listaConfiguraciones>
         </categoria>
+        <categoria id="$idCateoria">
+            <nombre> $nombreCategoria </nombre>
+            <descripcion> $descripcionCategoria </descripcion>
+            <cargaTrabajo> $descripcionCargaTrabajo </cargaTrabajo>
+            <listaConfiguraciones>
+                <configuracion id="$idConfiguracion">
+                    <nombre> $nombreConfiguracion </nombre>
+                    <descripcion> $descripcionConfiguracion </descripcion>
+                    <recursosConfiguracion>
+                        <recurso id="$idRecurso"> cantidadRecurso </recurso>
+
+                    </recursosConfiguracion>
+                </configuracion>
+            </listaConfiguraciones>
+        </categoria>
+        
     </listaCategorias>
     <listaClientes>
         <cliente nit="$nitCliente">

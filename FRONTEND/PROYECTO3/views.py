@@ -1,4 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from .models import *
+
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
 
 # Create your views here.
@@ -23,27 +27,39 @@ def home(request):
     return render(request, "index.html",context=context)
 
 def signUp(request):
-    ctx = {
-        'content':None,
-        'response':None
-    }
+    
+    
     if request.method == 'POST':
-        form = FileForm(request.POST, request.FILES)
+        form = UserCreationForm(request.POST)
+        
+
         if form.is_valid():
-            f = request.FILES['file']
-            xml_binary = f.read()
-            xml = xml_binary.decode('utf-8')
-            ctx['content'] = xml
-            response = requests.post(endpoint + 'agregarDatos', data=xml_binary)
-            if response.ok:
-                response =requests.get(endpoint + 'buscarmensajes')
-                buscarmsg = response.json()
-                ctx['response'] = buscarmsg
-            else:
-                ctx['response'] = 'El archivo se envio, pero hubo un error en el servidor'
+            
+            nombre= form.cleaned_data['nombres']
+            apellido = form.cleaned_data['apellidos']
+            username= form.cleaned_data['username']
+            correo= form.cleaned_data['correo']
+            contraseña= form.cleaned_data['contraseña']
+
+            messages.success(request,f'usuario {username}creado')
+            return redirect("index")
+        
+            
+
     else:
-        return render(request, 'signUp.html')
-    return render(request, 'signUp.html', ctx)
+            form = UserCreationForm()
+            
+            
+            
+
+    context= {'form': form}  
+    return render(request, 'signUp.html',context)  
+        
+        
+        
+        
+    
+    
 
 def login(request):
     context = {
@@ -60,3 +76,9 @@ def login(request):
         print("API no esta corriendo")    
 
     return render(request, "login.html",context=context)
+
+def buscarUsuarios(request):
+    response =requests.get(endpoint + 'buscarUsuario')
+    buscardatos = response.json()
+        
+    context['datos']= buscardatos

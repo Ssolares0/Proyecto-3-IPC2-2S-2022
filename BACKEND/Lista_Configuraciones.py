@@ -7,16 +7,17 @@ class Configuraciones():
         self.descripcion=descripcion
         self.recursosConfiguracion = []
 
-    def addRecursosConfig():
+    def addRecursosConfig(self,id,cantidadRecurso):
         nuevo = RecursosConfig(id, cantidadRecurso)
         self.recursosConfiguracion.append(nuevo)
 
-    def obtenerRecursosConfig():
+    def obtenerRecursosConfig(self):
         json=[]
 
         for config in self.recursosConfiguracion:
             config = {
-                'id': config.recursosConfiguracion,
+                'id': config.id,
+                "Cantidad": config.cantidadRecurso,
                 
 
             }  
