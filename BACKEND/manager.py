@@ -5,6 +5,7 @@ from Lista_Configuraciones import Configuraciones
 from Lista_RecursosConfig import RecursosConfig
 from Lista_Clientes import Cliente
 from Lista_Instancias import Instancias
+from Lista_Consumos import Consumos
 def normalize(s):
     replacements = (
         ("á", "a"),
@@ -29,6 +30,7 @@ class Manager():
         self.listaConfiguraciones =[]
         self.listaRecursosConfig =[]
         self.listaInstanci = []
+        self.listaConsumos= []
 
     def addListaRecursos(self,idRecurso, nombre, abreviatura, metrica, tipo, valorxhora):
         new = Recursos(idRecurso, nombre, abreviatura, metrica, tipo, valorxhora)
@@ -60,6 +62,10 @@ class Manager():
     def addListaInstancias(self,idInstancia,idConfiguracion,nombre,fechaInicio,estado,fechaFinal):
         new= Instancias(idInstancia, idConfiguracion, nombre, fechaInicio, estado, fechaFinal)
         self.listaInstanci.append(new)
+
+    def addListaConsumos(self,nitCliente,idInstancia,tiempo,fechaYhora):
+        new= Consumos(nitCliente,idInstancia,tiempo,fechaYhora) 
+        self.listaConsumos.append(new)  
 
 
 
@@ -124,6 +130,19 @@ class Manager():
             json.append(Clientes)
         return json    
 
+    def obtenerListaConsumos(self):
+        json=[]
+        for Consumos in self.listaConsumos:
+            Consumos ={
+                "nit": Consumos.nitCliente,
+                "Id": Consumos.idInstancia,
+                "Tiempo": Consumos.tiempo,
+                "Fecha y hora": Consumos.fechaYhora
+
+            }   
+            json.append(Consumos)
+        return json     
+
     def reset(self):
         self.listaRecursos =[]
         self.listaCategorias = []
@@ -131,4 +150,7 @@ class Manager():
         self.listaConfiguraciones =[]
         self.listaRecursosConfig =[]
         self.listaInstanci = []
+
+    def reset2(self):
+        self.listaConsumos =[]    
 

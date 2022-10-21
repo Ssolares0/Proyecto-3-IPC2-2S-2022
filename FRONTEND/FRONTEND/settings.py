@@ -114,6 +114,10 @@ USE_I18N = True
 
 USE_TZ = True
 
+#PDF Common Files frontend\app\common\
+#base = os.path.dirname(__file__) 
+#project = os.path.abspath(os.path.dirname(base)) otr forma de obtener BASE_DIR
+PDF_FILES_FOLDER = os.path.join(BASE_DIR, 'PROYECTO3/common/')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/

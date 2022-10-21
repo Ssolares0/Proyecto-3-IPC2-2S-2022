@@ -27,29 +27,35 @@ def index():
 manage = Manager()
 
 
-@app.route('/crearUsuario', methods=['POST'])
+@app.route('/crearUsuario',methods=['POST'])
 def crearUser():
+   global usuarios
    usuarioRep= False
    passwordValido= False
    caracteres= False
 
    countCarac= 0
+   contCaracteres = 0
    minimoCarac= False
 
+   user = request.get_data().decode('utf-8')
+   nombre = request.json["nombres"]
+   print(nombre)
    nuevoUser= users(request.json["nombres"], request.json["apellidos"], request.json["username"], request.json["correo"], request.json["contraseña"])
+   print(nuevoUser)
 
-   for x in usuarios:
+   """for x in usuarios:
         if (x.getUsername() == request.json["username"]):
             usuariorep = True
 
-   for x in request.json["password"]:
+   for x in request.json["contraseña"]:
         if (x == "!") or (x == "@") or (x == "#") or (x == "$") or (
                 x == "%") or (x == "^") or (x == "&") or (x == "*") or (
                     x == "(") or (x == ")"):
             caracteres = True
             print("si")
 
-   for x in request.json["password"]:
+   for x in request.json["contraseña"]:
 
         contCaracteres = contCaracteres + 1
         if contCaracteres >= 8:
@@ -81,9 +87,10 @@ def crearUser():
                 "mensaje":
                 "Contrasena no valida: Debe de contener algun caracter y numero"
             })
-            return (respuesta)
+            return (respuesta)"""
 
-            
+
+   return jsonify( {"ok": True,"MSG":"AGREGADO CON EXITO"})         
 
 
 
@@ -101,7 +108,9 @@ def AgregarDatos():
       count= 0
 
       xml = request.get_data().decode('utf-8')
+      
       root = ET.XML(xml)
+      
       for p in root:
          if p.tag== "listaRecursos":
             for subp in p:
@@ -140,8 +149,38 @@ def AgregarDatos():
         return(jsonify(mensaje))   
 
    return jsonify( {"ok": True,"MSG":"AGREGADO CON EXITO"})
-   
 
+@app.route('/add2', methods=['POST'])
+
+def AgregarDatos2():  
+   xmlGood =True
+   try:
+   
+      manage.listaConsumos = []
+      count= 0
+
+      xml = request.get_data().decode('utf-8')
+      root = ET.XML(xml)
+      
+      for p in root:
+         manage.addListaConsumos(p.attrib["nitCliente"], p.attrib["idInstancia"], p[0].text, p[1].text)
+
+
+   except:
+      xmlGood = False
+   if xmlGood is False:
+        mensaje = {
+            'ok':False,
+            'salida':None
+        }
+        print("Hay un error!!")
+        
+        return(jsonify(mensaje))   
+
+   return jsonify( {"ok": True,"MSG":"AGREGADO CON EXITO"})
+   
+   
+               #METODOS GET
 @app.route('/buscarlistarecursos', methods=['GET'])
 
 def buscarDatos():
@@ -157,10 +196,27 @@ def buscarCategorias():
 def buscarClientes():
    return jsonify( manage.obtenerListaClientes())
 
+@app.route('/buscarlistaConsumos', methods=['GET'])
+
+def buscarConsumos():
+   return jsonify( manage.obtenerListaConsumos())
+
+
+
+
+
+
+               #METODOS DELETE
 @app.route('/reset', methods=['DELETE'])
 
 def reset():
    manage.reset()
+   return jsonify({'msg':'borrado'})
+
+@app.route('/reset2', methods=['DELETE'])
+
+def reset2():
+   manage.reset2()
    return jsonify({'msg':'borrado'})
 
    

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  {% load static %}
+  <link rel="stylesheet" href="{% static '/stylenavbarhome.css' %}">
+  <title>Formulario Registro</title>
+</head>
+
+<div class="back"></div>
+<nav>
+  <a href="{% url 'cargarXML1' %}">Cargar XML 1</a>
+  <a href="{% url 'cargarXML2' %}">Cargar XML 2</a>
+  <a href="#">Operaciones del sistema</a>
+  <a href="{% url 'ayuda' %}">Ayuda</a>
+  
+</nav>
+
+
+{% endblock %}

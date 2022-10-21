@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  {% load static %}
+  <link rel="stylesheet" href="{% static '/stylenavbarhome.css' %}">
+  
+</head>
+
+
+<div class="container py-2">
+<form action="/cargarXML2/" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<label for="file2">Cargar un archivo</label>
+<br>
+<input type="file" id="file2" name="file2" accept="text/xml">
+
+
+<div class="container py-3">
+    {% if content %}   
+        <textarea label="textarea2" name="textarea2" rows="20" cols="70">{{content}}</textarea>
+        
+    {% else %}
+        <textarea style="margin-right: 1rem;" label="textarea2" name="textarea2" rows="20" cols="70"></textarea>
+        
+    {% endif %}
+    
+</div>
+
+<button type="submit" class="btn btn-dark btn-lg">Enviar</button>
+<button type="submit" class="btn btn-dark btn-lg" href><a href="{% url 'reset' %}">Reset</a></button>
+<a href="{% url 'home' %}" class="btn btn-dark btn-lg">Regresar</a>
+
+
+
+</form>
+</div>
+
+
+{% endblock %}

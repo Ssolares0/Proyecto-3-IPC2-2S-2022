@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<listadoConsumos>
+    <consumo nitCliente="3017" idInstancia="22">
+        <tiempo> 33 </tiempo>
+        <fechaHora> hola </fechaHora>
+    </consumo>
+
+</listadoConsumos>
