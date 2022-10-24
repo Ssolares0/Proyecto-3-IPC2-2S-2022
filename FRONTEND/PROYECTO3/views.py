@@ -3,7 +3,7 @@ from .models import *
 
 
 from django.http import FileResponse
-from PROYECTO3.forms import FileForm,FileFormSignUp,FileForm2,FileFormRecursos,FileFormCategorias
+from PROYECTO3.forms import FileForm,FileFormSignUp,FileForm2,FileFormRecursos,FileFormCategorias,FileFormClientes
 from FRONTEND.settings import PDF_FILES_FOLDER
 
 
@@ -266,8 +266,35 @@ def CrearCategorias(request):
             messages.success(request, "Hubo un error!")
     return render(request, "CrearCategorias.html",ctx)
     
+def CrearClientes(request):
+    if request.method == 'POST':
+        form = FileFormClientes(request.POST,request.FILES)
+        if form.is_valid():
+            parametros={
+                "nit":request.POST["nit"],
+                "nombreCliente":request.POST["nombreCliente"],
+                "usuario":request.POST["usuario"],
+                "clave":request.POST["clave"],
+                "direccion":request.POST["direccion"],
+                "email":request.POST["email"],
+                "idInstancia":request.POST["idInstancia"],
+                "idConfiguracion":request.POST["idConfiguracion"],
+                "nombreInstancia":request.POST["nombreInstancia"],
+                "fechaInicio":request.POST["fechaInicio"],
+                "estado":request.POST["estado"],
+                "fechaFinal":request.POST["fechaFinal"]
 
+            }
+            
+            response= requests.post(endpoint+'crearClientes',json=parametros)
+                
+            messages.success(request, "Datos enviados correctamente")
+        else:
+            messages.success(request, "Hubo un error!")
+    return render(request,"CrearClientes")
 
+def consultardatos(request):
+    return render(request,"consultardatos.html")
 
 def reset(request):
     

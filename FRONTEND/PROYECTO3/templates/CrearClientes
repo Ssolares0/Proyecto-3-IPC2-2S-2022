@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/styleSignup.css' %}">
+    <title>Crear Clientes</title>
+</head>
+{% if messages %}
+<ul class="alert alert-primary">
+    {% for message in messages %}
+    <li>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error:
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}¡Bien!:
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}Advertencia:
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}Aviso: {% endif %}
+        {{ message }}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form class="form-register" method="post">
+
+    {%csrf_token%}
+
+    <h4>Crear Clientes</h4>
+    <input class="controls" type="text" name="nit" id="nit" placeholder="Ingrese el nit">
+    <input class="controls" type="text" name="nombreCliente" id="nombreCliente" placeholder="Ingrese el nombre del Cliente">
+    <input class="controls" type="text" name="usuario" id="usuario" placeholder="Ingrese el usuario">
+    <input class="controls" type="text" name="clave" id="clave" placeholder="Ingrese la clave">
+    <input class="controls" type="text" name="direccion" id="direccion" placeholder="Ingrese  la direccion">
+    <input class="controls" type="email" name="email" id="email" placeholder="Ingrese el email">
+    
+
+    <h4>Crear Instancias</h4>
+    <input class="controls" type="text" name="idInstancia" id="idInstancia" placeholder="Ingrese el ID de la instancia">
+    <input class="controls" type="text" name="idConfiguracion" id="idConfiguracion" placeholder="Ingrese el ID de la Configuracion">
+    <input class="controls" type="text" name="nombreInstancia" id="nombreInstancia" placeholder="Ingrese  el nombre de la instancia">
+    <input class="controls" type="text" name="fechaInicio" id="fechaInicio" placeholder="Ingrese la fecha inicial">
+    <input class="controls" type="text" name="estado" id="estado" placeholder="Ingrese el estado">
+    <input class="controls" type="text" name="fechaFinal" id="fechaFinal" placeholder="Ingrese la fecha final">
+    
+
+
+    <button class="botons" type="submit" id="submit" value="Aceptar" Aceptar>Aceptar</button>
+
+    <p><a href="{% url 'creardatos' %}">Regresar</a></p>
+
+
+
+
+</form>
+
+
+
+
+
+
+
+
+</body>
+
+</html>
+
+{% endblock %}

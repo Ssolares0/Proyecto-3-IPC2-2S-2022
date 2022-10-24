@@ -110,7 +110,12 @@ def crearCategoria():
    manage.addListaConfiguraciones(request.json["idConfiguracion"], request.json["nombreConfiguracion"], request.json["descripcionConfiguracion"])
    manage.addListaCategorias(request.json["idCategoria"], request.json["nombreCategoria"], request.json["descripcionCategoria"], request.json["cargaTrabajo"])
 
+@app.route('/crearClientes', methods=['POST'])
 
+def crearClientes():
+   clientes= request.get_data()
+   manage.addListaInstancias(request.json["idInstancia"], request.json["idConfiguracion"], request.json["nombreInstancia"], request.json["fechaInicio"], request.json["estado"], request.json["fechaFinal"])
+   manage.addListaClientes(request.json["nit"], request.json["nombreCliente"], request.json["usuario"], request.json["clave"], request.json["direccion"], request.json["email"])
 
 @app.route('/add', methods=['POST'])
 
