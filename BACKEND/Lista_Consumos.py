@@ -4,3 +4,4 @@ class Consumos():
         self.idInstancia=idInstancia
         self.tiempo= tiempo
         self.fechaYhora=fechaYhora
+        

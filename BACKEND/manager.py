@@ -6,6 +6,7 @@ from Lista_RecursosConfig import RecursosConfig
 from Lista_Clientes import Cliente
 from Lista_Instancias import Instancias
 from Lista_Consumos import Consumos
+from usuario import users
 def normalize(s):
     replacements = (
         ("á", "a"),
@@ -31,6 +32,7 @@ class Manager():
         self.listaRecursosConfig =[]
         self.listaInstanci = []
         self.listaConsumos= []
+        self.listaUsuarios =[]
 
     def addListaRecursos(self,idRecurso, nombre, abreviatura, metrica, tipo, valorxhora):
         new = Recursos(idRecurso, nombre, abreviatura, metrica, tipo, valorxhora)
@@ -67,8 +69,24 @@ class Manager():
         new= Consumos(nitCliente,idInstancia,tiempo,fechaYhora) 
         self.listaConsumos.append(new)  
 
+    def addUsuarios(self, name, apellido, username, email, password):
+        new =users(name, apellido, username, email, password)
+        self.listaUsuarios.append(new)
 
 
+
+    def obtenerListaUsers(self):
+        json=[]
+        for Users in self.listaUsuarios:
+            Users={
+                "nombre":Users.name,
+                "apellido":Users.apellido,
+                "username":Users.username,
+                "email":Users.email,
+                "password:":Users.password
+            }
+            json.append(Users)
+        return json    
 
     
 
@@ -142,6 +160,7 @@ class Manager():
             }   
             json.append(Consumos)
         return json     
+    
 
     def reset(self):
         self.listaRecursos =[]

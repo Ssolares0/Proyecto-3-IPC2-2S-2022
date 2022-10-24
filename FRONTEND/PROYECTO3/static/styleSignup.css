@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+    
 .body {
     position: fixed;
     left: 0;
@@ -12,7 +12,7 @@
     height: 100%;
     background:url(https://pp.userapi.com/c841122/v841122831/327e/nHt-92F6yc4.jpg) no-repeat top center #efeff1;
     background-size:cover;
-  
+    
 
 }
 
@@ -31,6 +31,11 @@
 .form-register h4 {
     font-size: 22px;
     margin-bottom: 20px;
+}
+.correcto {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    background-image:url('imagenes/correcto.JPG');
 }
 
 .controls {

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+% extends "base.html" %}
 {% block content %}
 
 <!DOCTYPE html>
@@ -9,15 +9,16 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   {% load static %}
   <link rel="stylesheet" href="{% static '/stylenavbarhome.css' %}">
-  <title>Formulario Registro</title>
+  <title>Operaciones</title>
 </head>
 
 <div class="back"></div>
 <nav>
-  <a href="{% url 'cargarXML1' %}">Cargar XML 1</a>
-  <a href="{% url 'cargarXML2' %}">Cargar XML 2</a>
-  <a href="{% url 'operaciones' %}">Operaciones del sistema</a>
-  <a href="{% url 'ayuda' %}">Ayuda</a>
+  <a href="{% url 'creardatos' %}">Crear Datos</a>
+  <a href="#">Consultar Datos</a>
+  <a href="#">Proceso de facturacion</a>
+  <a href="#">Reportes en pdf</a>
+  <a href="{% url 'home' %}">Regresar</a>
   
 </nav>
 

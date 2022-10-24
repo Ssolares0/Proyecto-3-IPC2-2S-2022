@@ -29,20 +29,19 @@ manage = Manager()
 
 @app.route('/crearUsuario',methods=['POST'])
 def crearUser():
-   global usuarios
-   usuarioRep= False
-   passwordValido= False
+    
+   usuariorep= False
+   passval= False
    caracteres= False
 
    countCarac= 0
    contCaracteres = 0
    minimoCarac= False
 
-   user = request.get_data().decode('utf-8')
+   user = request.get_data()
    nombre = request.json["nombres"]
-   print(nombre)
-   nuevoUser= users(request.json["nombres"], request.json["apellidos"], request.json["username"], request.json["correo"], request.json["contraseña"])
-   print(nuevoUser)
+   nuevouser= (request.json["nombres"], request.json["apellidos"], request.json["username"], request.json["correo"], request.json["contraseña"])
+   manage.addUsuarios(request.json["nombres"], request.json["apellidos"], request.json["username"], request.json["correo"], request.json["contraseña"])
 
    """for x in usuarios:
         if (x.getUsername() == request.json["username"]):
@@ -64,8 +63,8 @@ def crearUser():
    if (minimoCarac == True) and (caracteres == True):
         passval = True
 
-   if (usuariorep == False) and (passval == True) and (generoVal == True):
-        usuarios.append(nuevouser)
+   if (usuariorep == False) and (passval == True):
+        manage.addUsuarios(request.json["nombres"], request.json["apellidos"], request.json["username"], request.json["correo"], request.json["contraseña"])
         respuesta = jsonify({
             "error": False,
             "mensaje": "Cuenta creada satisfactoriamente"
@@ -90,8 +89,26 @@ def crearUser():
             return (respuesta)"""
 
 
-   return jsonify( {"ok": True,"MSG":"AGREGADO CON EXITO"})         
+   return jsonify( {"ok": True,"MSG":"USER AGREGADO CON EXITO CON EXITO"})         
 
+
+@app.route('/crearRecursos', methods=['POST'])
+
+def CrearRecursos():
+   recursos = request.get_data()
+   print(request.json["idRecurso"], request.json["nombre"], request.json["abreviatura"], request.json["metrica"], request.json["tipo"], request.json["valorxhora"])
+
+   manage.addListaRecursos(request.json["idRecurso"], request.json["nombre"], request.json["abreviatura"], request.json["metrica"], request.json["tipo"], request.json["valorxhora"])
+
+
+@app.route('/crearCategoria', methods=['POST'])
+
+def crearCategoria():
+   categoria = request.get_data()
+
+   manage.addRecursosConfig(request.json["idRecursosConfiguracion"], request.json["cantidad"])
+   manage.addListaConfiguraciones(request.json["idConfiguracion"], request.json["nombreConfiguracion"], request.json["descripcionConfiguracion"])
+   manage.addListaCategorias(request.json["idCategoria"], request.json["nombreCategoria"], request.json["descripcionCategoria"], request.json["cargaTrabajo"])
 
 
 
@@ -221,14 +238,11 @@ def reset2():
 
    
 
-
-
-
 @app.route('/buscarUsuario', methods=['GET'])
 
 def buscarUsuarios():
    
-   return jsonify("s")
+   return jsonify(manage.obtenerListaUsers())
 
    
 

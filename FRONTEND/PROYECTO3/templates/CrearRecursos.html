@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  {% load static %}
+  <link rel="stylesheet" href="{% static '/styleSignup.css' %}">
+  <title>Crear Recursos</title>
+</head>
+{% if messages %}
+  <ul class="alert alert-primary">
+  {% for message in messages %}
+  <li>
+      {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error:
+      {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}¡Bien!:
+      {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}Advertencia:
+      {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}Aviso: {% endif %}
+      {{ message }}
+  </li>
+  {% endfor %}
+  </ul>
+  {% endif %}  
+
+  <form class="form-register" method="post">
+    
+    {%csrf_token%}
+    
+    <h4>Crear Recursos</h4>
+    <input class="controls" type="text" name="idRecurso" id="idRecurso" placeholder="Ingrese el ID">
+    <input class="controls" type="text" name="nombre" id="nombre" placeholder="Ingrese el nombre">
+    <input class="controls" type="text" name="abreviatura" id="abreviatura" placeholder="Ingrese la abreviatura">
+    <input class="controls" type="text" name="metrica" id="metrica" placeholder="Ingrese  la metrica">
+    <input class="controls" type="text" name="tipo" id="tipo" placeholder="Ingrese el tipo">
+    <input class="controls" type="text" name="valorxhora" id="valorxhora" placeholder="Ingrese el Valor x hora">
+    
+    
+    <button class="botons" type="submit" id= "submit"value="Aceptar"Aceptar >Aceptar</button>
+    
+    <p><a href="{% url 'creardatos' %}">Regresar</a></p>
+
+    
+
+    
+  </form>
+
+
+  
+
+ 
+  
+  
+
+</body>
+</html>
+
+{% endblock  %}

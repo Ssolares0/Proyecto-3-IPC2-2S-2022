@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  {% load static %}
+  <link rel="stylesheet" href="{% static '/styleSignup.css' %}">
+  <title>Crear Categorias</title>
+</head>
+{% if messages %}
+  <ul class="alert alert-primary">
+  {% for message in messages %}
+  <li>
+      {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error:
+      {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}¡Bien!:
+      {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}Advertencia:
+      {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}Aviso: {% endif %}
+      {{ message }}
+  </li>
+  {% endfor %}
+  </ul>
+  {% endif %}  
+  
+
+  <form class="form-register" method="post">
+  {%csrf_token%}
+  
+  <h4>Crear Categorias</h4>
+  <input class="controls" type="text" name="idCategoria" id="idCategoria" placeholder="Ingrese el ID de la categoria">
+  <input class="controls" type="text" name="nombreCategoria" id="nombreCategoria" placeholder="Ingrese el nombre de la categoria">
+  <input class="controls" type="text" name="descripcionCategoria" id="descripcionCategoria" placeholder="Ingrese la Descripcion de la categoria">
+  <input class="controls" type="text" name="cargaTrabajo" id="cargaTrabajo" placeholder="Ingrese  la carga de trabajo">
+  <h4>Crear Configuracion</h4>
+  <input class="controls" type="text" name="idConfiguracion" id="idConfiguracion" placeholder="Ingrese el ID de la configuracion">
+  <input class="controls" type="text" name="nombreConfiguracion" id="nombreConfiguracion" placeholder="Ingrese el nombre de la configuracion">
+  <input class="controls" type="text" name="descripcionConfiguracion" id="descripcionConfiguracion" placeholder="Ingrese la Descripcion de la configuracion">
+  <h4>Crear Recursos Configuracion</h4>
+  <input class="controls" type="text" name="idRecursosConfiguracion" id="idRecursosConfiguracion" placeholder="Ingrese el ID del Recurso de configuracion">
+  <input class="controls" type="text" name="cantidad" id="cantidad" placeholder="Ingrese la cabtidad del Recurso de configuracion">
+  
+  <button class="botons" type="submit" id= "submit"value="Aceptar"Aceptar >Aceptar</button>
+  
+  <p><a href="{% url 'creardatos' %}">Regresar</a></p>
+
+  
+
+  
+</form>
+  
+
+ 
+  
+  
+
+</body>
+</html>
+
+{% endblock  %}

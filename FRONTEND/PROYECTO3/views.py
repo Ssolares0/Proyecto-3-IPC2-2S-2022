@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
 from .models import *
 
+
 from django.http import FileResponse
-from PROYECTO3.forms import FileForm,FileFormSignUp,FileForm2
+from PROYECTO3.forms import FileForm,FileFormSignUp,FileForm2,FileFormRecursos,FileFormCategorias
 from FRONTEND.settings import PDF_FILES_FOLDER
 
 
@@ -118,6 +119,7 @@ def pdf_view(request):
 
 
 def signUp(request):
+    
     ctx = {
         'nombres':None,
         'apellidos':None,
@@ -129,38 +131,38 @@ def signUp(request):
     if request.method == 'POST':
         form = FileFormSignUp(request.POST,request.FILES)
         if form.is_valid():
-            parametros ={
-                'nombres':request.POST['nombres'],
-                'apellidos':request.POST['apellidos'],
-                'username': request.POST['username'],
-                'correo': request.POST['correo'],
-                'contraseña':request.POST['contraseña']
+                """response = requests.get(endpoint + 'buscarUsuario')
+                datos= response.json()
 
-            }
-            response= requests.post(endpoint+'crearUsuario',json=parametros)
-            datos= response.text
+                for x in datos:
+                    print (x)"""
             
-            
-            print(parametros)
-            """ctx['nombre']= nombres
-            ctx['apellidos']= apellidos
-            ctx['correo']= correo
-            ctx['contraseña']= contraseña"""
+                parametros ={
+                    'nombres':request.POST['nombres'],
+                    'apellidos':request.POST['apellidos'],
+                    'username': request.POST['username'],
+                    'correo': request.POST['correo'],
+                    'contraseña':request.POST['contraseña']
 
-            response = requests.post(endpoint + 'crearUsuario', parametros)
-        
-        
-        
+                }
+                response= requests.post(endpoint+'crearUsuario',json=parametros)
+                
+                messages.success(request, "Usuario creado Correctamente")
+                
+                datos= response.text
+                
+                
+                print(parametros)
+                """ctx['nombre']= nombres
+                ctx['apellidos']= apellidos
+                ctx['correo']= correo
+                ctx['contraseña']= contraseña"""
 
-        
-        
-            
+                response = requests.post(endpoint + 'crearUsuario', parametros)
 
-    
-            
-            
-            
-
+        else:    
+                messages.error(request,"Hubo un problema al crear usuario, revise la informacion ingresada")    
+        
       
     return render(request, 'signUp.html',ctx)  
         
@@ -199,6 +201,72 @@ def home(request):
         'title' : 'Home'
     }
     return render(request, "home.html",context=context)
+
+def operaciones(request):
+    return render(request, "operaciones.html")
+
+def creardatos(request):
+    return render(request,"creardatos.html" )
+
+def CrearRecursos(request):
+    ctx={
+        "idRecurso":None,
+        "nombre":None,
+        "abreviatura":None,
+        "metrica":None,
+        "tipo":None,
+        "valorxhora":None
+
+    }
+    if request.method == 'POST':
+        form = FileFormRecursos(request.POST,request.FILES)
+        if form.is_valid():
+            parametros={
+                "idRecurso":request.POST["idRecurso"],
+                "nombre":request.POST["nombre"],
+                "abreviatura":request.POST["abreviatura"],
+                "metrica":request.POST["metrica"],
+                "tipo":request.POST["tipo"],
+                "valorxhora":request.POST["valorxhora"]
+
+            }
+            
+            response= requests.post(endpoint+'crearRecursos',json=parametros)
+                
+            messages.success(request, "Datos enviados correctamente")
+        else:
+            messages.success(request, "Hubo un error!")
+    return render(request, "CrearRecursos.html",ctx)
+
+def CrearCategorias(request):
+    ctx={
+       
+
+    }
+    if request.method == 'POST':
+        form = FileFormCategorias(request.POST,request.FILES)
+        if form.is_valid():
+            parametros={
+                "idCategoria":request.POST["idCategoria"],
+                "nombreCategoria":request.POST["nombreCategoria"],
+                "descripcionCategoria":request.POST["descripcionCategoria"],
+                "cargaTrabajo":request.POST["cargaTrabajo"],
+                "idConfiguracion":request.POST["idConfiguracion"],
+                "nombreConfiguracion":request.POST["nombreConfiguracion"],
+                "descripcionConfiguracion":request.POST["descripcionConfiguracion"],
+                "idRecursosConfiguracion":request.POST["idRecursosConfiguracion"],
+                "cantidad":request.POST["cantidad"]
+
+            }
+            
+            response= requests.post(endpoint+'crearCategoria',json=parametros)
+                
+            messages.success(request, "Datos enviados correctamente")
+        else:
+            messages.success(request, "Hubo un error!")
+    return render(request, "CrearCategorias.html",ctx)
+    
+
 
 
 def reset(request):

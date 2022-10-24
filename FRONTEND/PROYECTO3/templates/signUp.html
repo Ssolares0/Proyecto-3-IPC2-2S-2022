@@ -13,6 +13,19 @@
   <title>Formulario Registro</title>
 </head>
 
+{% if messages %}
+<ul class="alert alert-primary">
+{% for message in messages %}
+<li>
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error:
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}¡Bien!:
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}Advertencia:
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}Aviso: {% endif %}
+    {{ message }}
+</li>
+{% endfor %}
+</ul>
+{% endif %}  
 
   <form class="form-register" method="post">
     
@@ -24,23 +37,19 @@
     <input class="controls" type="text" name="username" id="username" placeholder="Ingrese su username">
     <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su Correo">
     <input class="controls" type="password" name="contraseña" id="contraseña" placeholder="Ingrese su Contraseña">
+    <p>La contraseña debe tener maximo 8 digitos y un simbolo "@,"/","!" etc</p>
+    <p></p>
     <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>
     
-    <p><a href="#">¿Ya tengo Cuenta?</a></p>
+    <p><a href="{% url 'login' %}">¿Ya tengo Cuenta?</a></p>
     
     <button class="botons" type="submit" id= "submit"value="Registrar">Registrar</button>
     
     <p><a href="{% url 'index' %}">Regresar</a></p>
 
-    {% if messages %}
-      {% for message in messages %}
-      <div class="notification {{message.tags}}">
-        {{ message }}
+    
 
-      </div>
-      {% endfor %}
-
-    {% endif %}
+  
     
   </form>
 
