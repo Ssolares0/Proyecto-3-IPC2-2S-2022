@@ -294,7 +294,23 @@ def CrearClientes(request):
     return render(request,"CrearClientes")
 
 def consultardatos(request):
-    return render(request,"consultardatos.html")
+    context = {
+        'content':None,
+        'response':None
+    }
+    
+    try:
+        response =requests.get(endpoint + 'buscarlistarecursos')
+        buscardatos = response.json()
+        print(buscardatos)
+        context['content']= buscardatos
+       
+    except:
+        print("API no esta corriendo") 
+    
+
+    #{"context":context}
+    return render(request,"consultardatos.html",context=context)
 
 def reset(request):
     

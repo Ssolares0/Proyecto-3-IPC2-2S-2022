@@ -154,8 +154,18 @@ def AgregarDatos():
             for subp3 in p:
                for subsubp3 in subp3:
                   for subsubsubp3 in subsubp3:
-                     print(subsubsubp3.attrib["id"], subsubsubp3[0].text, subsubsubp3[1].text, subsubsubp3[2].text,subsubsubp3[3].text,subsubsubp3[4].text)
-                     manage.addListaInstancias(subsubsubp3.attrib["id"], subsubsubp3[0].text, subsubsubp3[1].text, subsubsubp3[2].text,subsubsubp3[3].text,subsubsubp3[4].text)
+                     texto= subsubsubp3[2].text
+                     
+                     datos = re.compile(r'(\d+\D\d+\D\d+)')
+                     datos2= datos.findall(texto)
+                     
+                     """texto2= subsubsubp3[4].text
+                     datos3 = re.compire(r'(\d+\D\d+\D\d+)')
+                     datos4 = datos3.findall(texto2)"""
+                     
+
+                     
+                     manage.addListaInstancias(subsubsubp3.attrib["id"], subsubsubp3[0].text, subsubsubp3[1].text, datos2[0],subsubsubp3[3].text,"datos4[0]")
                manage.addListaClientes(subp3.attrib["nit"], subp3[0].text, subp3[1].text, subp3[2].text,subp3[3].text,subp3[4].text)
 
 
