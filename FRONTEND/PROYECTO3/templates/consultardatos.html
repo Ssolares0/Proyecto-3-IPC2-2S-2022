@@ -1,77 +1,199 @@
-{% extends "base.html" %}
+
 {% block content %}
+
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   {% load static %}
-  <link rel="stylesheet" href="{% static '/stylenavbarhome.css' %}">
-  <title>Creacion de datos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  
+  <title>Mostrar Datos</title>
 </head>
+<body background="/static/fondobonito.jpg">
+<h1 style="text-align:center">Recursos</h1>
 
-<h1 style="text-align:center" >Recursos</h1>
+<table  class=" table table-dark  " >
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Abreviatura</th>
+      <th scope="col">Metrica</th>
+      <th scope="col">Tipo</th>
+      <th scope="col">Valor X hora</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for datos in context %}
+    <tr>
+      <th scope="row">{{datos.id}}</th>
+      <td>{{datos.nombre}}</td>
+      <td>{{datos.abreviatura}}</td>
+      <td>{{datos.metrica}}</td>
+      <td>{{datos.tipo}}</td>
+      <td>{{datos.valorxhora}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+<h1 style="text-align:center">Categorias</h1>
 
 
 <table class=" table table-dark">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Abreviatura</th>
-        <th scope="col">Metrica</th>
-        <th scope="col">Tipo</th>
-        <th scope="col">Valor X hora</th>
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Carga de trabajo</th>
 
-      </tr>
-    </thead>
-    <tbody>
-      {% for datos in content %}
+
+
+
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for datos2 in context2 %}
+    <tr>
+      <th scope="row">{{datos2.idCategoria}}</th>
+      <td>{{datos2.nombreCategoria}}</td>
+      <td>{{datos2.descripcionCategoria}}</td>
+      <td>{{datos2.Cargadetrabajo}}</td>
+
+
+
+
+
+
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<table class=" table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">ID Configuracion</th>
+      <th scope="col">Nombre Configuracion</th>
+      <th scope="col">Descripcion Configuracion</th>
+
+
+
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for datos3 in context2 %}
+    {% for datos4 in datos3.listaConfiguraciones %}
+
+    <tr>
+      <th scope="row">{{datos4.idConfiguracion}}</th>
+      <td>{{datos4.Nombre}}</td>
+      <td>{{datos4.descripcion}}</td>
+
+
+    </tr>
+    {% endfor %}
+    {% endfor %}
+  </tbody>
+</table>
+
+<table class=" table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">ID Recurso</th>
+      <th scope="col">Nombre Recurso</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for datos5 in context2 %}
+    {% for datos6 in datos5.listaConfiguraciones %}
+    {% for datos7 in datos6.RecursosConfiguracion %}
+
+    <tr>
+      <th scope="row">{{datos7.idConfig}}</th>
+      <td>{{datos7.CantidadRecurso}}</td>
+
+
+    </tr>
+    {% endfor %}
+    {% endfor %}
+    {% endfor %}
+  </tbody>
+</table>
+
+<h1 style="text-align:center">Clientes</h1>
+
+<table  class=" table table-dark  " >
+  <thead>
+    <tr>
+      <th scope="col">Nit</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Usuario</th>
+      <th scope="col">Clave</th>
+      <th scope="col">direccion</th>
+      <th scope="col">Correo </th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for datos8 in context3 %}
+    <tr>
+      <th scope="row">{{datos8.Nit}}</th>
+      <td>{{datos8.Nombre}}</td>
+      <td>{{datos8.Usuario}}</td>
+      <td>{{datos8.Clave}}</td>
+      <td>{{datos8.direccion}}</td>
+      <td>{{datos8.Correo}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<table  class=" table table-dark  " >
+  <thead>
+    <tr>
+      <th scope="col">ID instancia</th>
+      <th scope="col">ID Configuracion</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Fecha Inicio</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Fecha FINAL</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for datos9 in context3 %}
+      {% for datos10 in datos9.listaInstancias %}
       <tr>
-        <th scope="row">{{datos.id}}</th>
-        <td>{{datos.nombre}}</td>
-        <td>{{datos.abreviatura}}</td>
-        <td>{{datos.metrica}}</td>
-        <td>{{datos.tipo}}</td>
-        <td>{{datos.valorxhora}}</td>
+        <th scope="row">{{datos10.IDinstancia}}</th>
+        <td>{{datos10.IDCONFIGURACION}}</td>
+        <td>{{datos10.Nombre}}</td>
+        <td>{{datos10.FechaInicio}}</td>
+        <td>{{datos10.Estado}}</td>
+        <td>{{datos10.FechaFinal}}</td>
       </tr>
       {% endfor %}
-    </tbody>
-  </table>
-  
-  
-  <h1 style="text-align:center" >Categorias</h1>
+    {% endfor %}
+  </tbody>
+</table>
 
-  <table class=" table table-dark">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Descripcion</th>
-        <th scope="col">Carga de trabajo</th>
-        <th scope="col">Tipo</th>
-        <th scope="col">Valor X hora</th>
 
-      </tr>
-    </thead>
-    <tbody>
-      {% for datos in content %}
-      <tr>
-        <th scope="row">{{datos.id}}</th>
-        <td>{{datos.nombre}}</td>
-        <td>{{datos.abreviatura}}</td>
-        <td>{{datos.metrica}}</td>
-        <td>{{datos.tipo}}</td>
-        <td>{{datos.valorxhora}}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
 
-  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-  <a  href="{% url 'operaciones' %}" class="btn btn-light ">Regresar</a>
-  </div>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <a href="{% url 'operaciones' %}" class="btn btn-light ">Regresar</a>
+</div>
+</body>
 {% endblock %}

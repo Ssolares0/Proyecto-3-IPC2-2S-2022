@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:500');
+
 .back{
+  
   position: fixed;
   left: 0;
   top: 0;
@@ -8,6 +10,7 @@
   background:url(https://pp.userapi.com/c841122/v841122831/327e/nHt-92F6yc4.jpg) no-repeat top center #efeff1;
   background-size:cover;
 }
+
 .thx{
   position: fixed;
   left:50%;
@@ -51,7 +54,6 @@ nav a:hover:before{
   animation:in 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
 
 }
-
 
 
 .p { 

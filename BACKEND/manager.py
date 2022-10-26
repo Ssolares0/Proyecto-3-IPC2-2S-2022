@@ -112,11 +112,11 @@ class Manager():
         json = []
         for Categorias in self.listaCategorias:
             Categorias = {
-                "id": Categorias.idCategoria,
-                "nombre": Categorias.nombre,
-                "descripcion":Categorias.descripcion,
-                "Carga de trabajo":Categorias.cargaTrabajo,
-                "lista Configuraciones": Categorias.obtenerListaConfig()
+                "idCategoria": Categorias.idCategoria,
+                "nombreCategoria": Categorias.nombre,
+                "descripcionCategoria":Categorias.descripcion,
+                "Cargadetrabajo":Categorias.cargaTrabajo,
+                "listaConfiguraciones": Categorias.obtenerListaConfig()
 
                 
 
@@ -137,7 +137,7 @@ class Manager():
                 "Clave": Clientes.clave,
                 "direccion":Clientes.direccion,
                 "Correo": Clientes.correo,
-                "lista Instancias": Clientes.obtenerListaInstancias()
+                "listaInstancias": Clientes.obtenerListaInstancias()
 
 
 

@@ -16,8 +16,8 @@ class Configuraciones():
 
         for config in self.recursosConfiguracion:
             config = {
-                'id': config.id,
-                "Cantidad": config.cantidadRecurso,
+                'idConfig': config.id,
+                "CantidadRecurso": config.cantidadRecurso,
                 
 
             }  

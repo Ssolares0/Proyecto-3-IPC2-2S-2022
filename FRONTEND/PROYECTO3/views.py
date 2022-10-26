@@ -291,26 +291,48 @@ def CrearClientes(request):
             messages.success(request, "Datos enviados correctamente")
         else:
             messages.success(request, "Hubo un error!")
-    return render(request,"CrearClientes")
+    return render(request,"CrearClientes.html")
 
 def consultardatos(request):
     context = {
         'content':None,
         'response':None
     }
-    
+    context2 = {
+        'content2':None,
+        'response2':None
+    }
+    context3 = {
+        'content3':None,
+        'response3':None
+    }
     try:
         response =requests.get(endpoint + 'buscarlistarecursos')
         buscardatos = response.json()
-        print(buscardatos)
+
+        response2 =requests.get(endpoint + 'buscarlistaCategorias')
+        buscardatos2= response2.json()
+
+        response3= requests.get(endpoint+'buscarlistaClientes')
+        buscardatos3= response3.json()
+        
+        
         context['content']= buscardatos
+        context2['content2']=buscardatos2
+        context3['content3']=buscardatos3
+        
+        
+
        
     except:
-        print("API no esta corriendo") 
+        print("Error al buscar las listas") 
     
 
-    #{"context":context}
-    return render(request,"consultardatos.html",context=context)
+    #{"context2":context2}
+    
+    return render(request,"consultardatos.html",{"context":context['content'],"context2":context2['content2'],"context3":context3['content3']})
+    
+    
 
 def reset(request):
     

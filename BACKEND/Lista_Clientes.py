@@ -19,12 +19,12 @@ class Cliente():
 
         for config in self.listaInstancias:
             config2={
-                "ID instancia": config.idInstancia,
-                "ID CONFIGURACION": config.idConfiguracion,
+                "IDinstancia": config.idInstancia,
+                "IDCONFIGURACION": config.idConfiguracion,
                 "Nombre": config.nombre,
-                "Fecha Inicio": config.fechaInicio,
+                "FechaInicio": config.fechaInicio,
                 "Estado": config.estado,
-                "Fecha Final": config.fechaFinal,
+                "FechaFinal": config.fechaFinal,
                 
 
 

@@ -21,7 +21,7 @@ class Categorias():
                 
                 'Nombre': config.nombre,
                 "descripcion": config.descripcion,
-                "Recursos Configuracion": config.obtenerRecursosConfig()
+                "RecursosConfiguracion": config.obtenerRecursosConfig()
                 
                 
 
