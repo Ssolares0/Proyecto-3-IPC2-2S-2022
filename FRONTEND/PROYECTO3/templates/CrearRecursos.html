@@ -32,12 +32,12 @@
     {%csrf_token%}
     
     <h4>Crear Recursos</h4>
-    <input class="controls" type="text" name="idRecurso" id="idRecurso" placeholder="Ingrese el ID">
+    <input class="controls" type="number" min="0" name="idRecurso" id="idRecurso" placeholder="Ingrese el ID">
     <input class="controls" type="text" name="nombre" id="nombre" placeholder="Ingrese el nombre">
     <input class="controls" type="text" name="abreviatura" id="abreviatura" placeholder="Ingrese la abreviatura">
     <input class="controls" type="text" name="metrica" id="metrica" placeholder="Ingrese  la metrica">
     <input class="controls" type="text" name="tipo" id="tipo" placeholder="Ingrese el tipo">
-    <input class="controls" type="text" name="valorxhora" id="valorxhora" placeholder="Ingrese el Valor x hora">
+    <input class="controls" type="number" step="0.01" min="0" max="10"name="valorxhora" id="valorxhora" placeholder="Ingrese el Valor x hora">
     
     
     <button class="botons" type="submit" id= "submit"value="Aceptar"Aceptar >Aceptar</button>

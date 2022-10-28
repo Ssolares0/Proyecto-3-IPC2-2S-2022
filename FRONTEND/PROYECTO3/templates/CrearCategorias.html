@@ -32,17 +32,17 @@
   {%csrf_token%}
   
   <h4>Crear Categorias</h4>
-  <input class="controls" type="text" name="idCategoria" id="idCategoria" placeholder="Ingrese el ID de la categoria">
+  <input class="controls" type="number" min="0" name="idCategoria" id="idCategoria" placeholder="Ingrese el ID de la categoria">
   <input class="controls" type="text" name="nombreCategoria" id="nombreCategoria" placeholder="Ingrese el nombre de la categoria">
   <input class="controls" type="text" name="descripcionCategoria" id="descripcionCategoria" placeholder="Ingrese la Descripcion de la categoria">
   <input class="controls" type="text" name="cargaTrabajo" id="cargaTrabajo" placeholder="Ingrese  la carga de trabajo">
   <h4>Crear Configuracion</h4>
-  <input class="controls" type="text" name="idConfiguracion" id="idConfiguracion" placeholder="Ingrese el ID de la configuracion">
+  <input class="controls" type="number" min="0" name="idConfiguracion" id="idConfiguracion" placeholder="Ingrese el ID de la configuracion">
   <input class="controls" type="text" name="nombreConfiguracion" id="nombreConfiguracion" placeholder="Ingrese el nombre de la configuracion">
   <input class="controls" type="text" name="descripcionConfiguracion" id="descripcionConfiguracion" placeholder="Ingrese la Descripcion de la configuracion">
   <h4>Crear Recursos Configuracion</h4>
-  <input class="controls" type="text" name="idRecursosConfiguracion" id="idRecursosConfiguracion" placeholder="Ingrese el ID del Recurso de configuracion">
-  <input class="controls" type="text" name="cantidad" id="cantidad" placeholder="Ingrese la cabtidad del Recurso de configuracion">
+  <input class="controls" type="number" min="0" name="idRecursosConfiguracion" id="idRecursosConfiguracion" placeholder="Ingrese el ID del Recurso de configuracion">
+  <input class="controls" type="number" min="0" name="cantidad" id="cantidad" placeholder="Ingrese la cabtidad del Recurso de configuracion">
   
   <button class="botons" type="submit" id= "submit"value="Aceptar"Aceptar >Aceptar</button>
   

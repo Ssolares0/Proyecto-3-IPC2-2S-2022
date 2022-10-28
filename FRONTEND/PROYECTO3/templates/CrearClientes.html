@@ -33,21 +33,21 @@
     {%csrf_token%}
 
     <h4>Crear Clientes</h4>
-    <input class="controls" type="text" name="nit" id="nit" placeholder="Ingrese el nit">
+    <input class="controls" type="number" min="0" name="nit" id="nit" placeholder="Ingrese el nit">
     <input class="controls" type="text" name="nombreCliente" id="nombreCliente" placeholder="Ingrese el nombre del Cliente">
-    <input class="controls" type="text" name="usuario" id="usuario" placeholder="Ingrese el usuario">
-    <input class="controls" type="text" name="clave" id="clave" placeholder="Ingrese la clave">
+    <input class="controls" type="username" name="usuario" id="usuario" placeholder="Ingrese el usuario">
+    <input class="controls" type="password" name="clave" id="clave" placeholder="Ingrese la clave">
     <input class="controls" type="text" name="direccion" id="direccion" placeholder="Ingrese  la direccion">
     <input class="controls" type="email" name="email" id="email" placeholder="Ingrese el email">
     
 
     <h4>Crear Instancias</h4>
-    <input class="controls" type="text" name="idInstancia" id="idInstancia" placeholder="Ingrese el ID de la instancia">
-    <input class="controls" type="text" name="idConfiguracion" id="idConfiguracion" placeholder="Ingrese el ID de la Configuracion">
+    <input class="controls"  type="number" min="0" name="idInstancia" id="idInstancia" placeholder="Ingrese el ID de la instancia">
+    <input class="controls" type="number" min="0" name="idConfiguracion" id="idConfiguracion" placeholder="Ingrese el ID de la Configuracion">
     <input class="controls" type="text" name="nombreInstancia" id="nombreInstancia" placeholder="Ingrese  el nombre de la instancia">
-    <input class="controls" type="text" name="fechaInicio" id="fechaInicio" placeholder="Ingrese la fecha inicial">
+    <input class="controls" type="date" name="fechaInicio" id="fechaInicio" placeholder="Ingrese la fecha inicial">
     <input class="controls" type="text" name="estado" id="estado" placeholder="Ingrese el estado">
-    <input class="controls" type="text" name="fechaFinal" id="fechaFinal" placeholder="Ingrese la fecha final">
+    <input class="controls" type="date" name="fechaFinal" id="fechaFinal" placeholder="Ingrese la fecha final">
     
 
 

@@ -331,8 +331,17 @@ def consultardatos(request):
     #{"context2":context2}
     
     return render(request,"consultardatos.html",{"context":context['content'],"context2":context2['content2'],"context3":context3['content3']})
+
+def facturacion(request):
+    cx={
+        "context":None,
+        "response":None
+    }
+    return render(request, "facturacion.html",cx)    
     
-    
+
+def infoestudiante(request):
+    return render(request,"infoestudiante.html")
 
 def reset(request):
     

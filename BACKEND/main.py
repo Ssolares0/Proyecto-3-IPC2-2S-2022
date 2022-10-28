@@ -165,7 +165,7 @@ def AgregarDatos():
                      
 
                      
-                     manage.addListaInstancias(subsubsubp3.attrib["id"], subsubsubp3[0].text, subsubsubp3[1].text, datos2[0],subsubsubp3[3].text,"datos4[0]")
+                     manage.addListaInstancias(subsubsubp3.attrib["id"], subsubsubp3[0].text, subsubsubp3[1].text, datos2[0],subsubsubp3[3].text,subsubsubp3[4].text)
                manage.addListaClientes(subp3.attrib["nit"], subp3[0].text, subp3[1].text, subp3[2].text,subp3[3].text,subp3[4].text)
 
 

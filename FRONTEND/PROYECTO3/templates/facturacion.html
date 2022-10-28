@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/styleSignup.css' %}">
+    <title>Crear facturacion</title>
+</head>
+<body background="/static/fondobonito.jpg">
+{% if messages %}
+<ul class="alert alert-primary">
+    {% for message in messages %}
+    <li>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error:
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}¡Bien!:
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}Advertencia:
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}Aviso: {% endif %}
+        {{ message }}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form class="form-register" method="post">
+
+    {%csrf_token%}
+
+    <h4>Crear Facturacion</h4>
+    <input class="controls" type="date" name="fechaInicio" id="fechaInicio" placeholder="Ingrese la fecha inicial">
+    <input class="controls" type="date" name="fechaFinal" id="fechaFinal" placeholder="Ingrese la fecha final">
+   
+
+    <button class="botons" type="submit" id="submit" value="Aceptar" Aceptar>Aceptar</button>
+
+    <p><a href="{% url 'operaciones' %}">Regresar</a></p>
+
+
+
+
+</form>
+{%endblock%}
