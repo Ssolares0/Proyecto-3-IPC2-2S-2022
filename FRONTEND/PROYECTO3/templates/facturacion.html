@@ -11,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {% load static %}
     <link rel="stylesheet" href="{% static '/styleSignup.css' %}">
+    <link rel="stylesheet" href="{% static '/stylefactura.css' %}">
     <title>Crear facturacion</title>
 </head>
 <body background="/static/fondobonito.jpg">
@@ -33,8 +34,8 @@
     {%csrf_token%}
 
     <h4>Crear Facturacion</h4>
-    <input class="controls" type="date" name="fechaInicio" id="fechaInicio" placeholder="Ingrese la fecha inicial">
-    <input class="controls" type="date" name="fechaFinal" id="fechaFinal" placeholder="Ingrese la fecha final">
+    <input class="controls" type="date" name="fechaInicio"  id="fechaInicio" placeholder="Ingrese la fecha inicial">
+    <input class="controls" type="date" name="fechaFinal"  id="fechaFinal" placeholder="Ingrese la fecha final">
    
 
     <button class="botons" type="submit" id="submit" value="Aceptar" Aceptar>Aceptar</button>
@@ -45,4 +46,79 @@
 
 
 </form>
+{% for datos in context %}
+    
+    <table class="body-wrap" >
+        <tbody><tr>
+            <td></td>
+            <td class="container" width="600">
+                <div class="content">
+                    <table class="main" width="100%" cellpadding="0" cellspacing="0">
+                        <tbody><tr>
+                            <td class="content-wrap aligncenter">
+                                <table width="100%" cellpadding="0" cellspacing="0">
+                                    <tbody><tr>
+                                        <td class="content-block">
+                                            <h2>Factura de {{datos.nombrecliente}}</h2>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="content-block">
+                                            <table class="invoice">
+                                                <tbody><tr>
+                                                    <td>No: {{ datos.NumeroFactura}}<br>Nit: {{datos.nitCliente}}<br>Fecha: {{datos.fechaFinal}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <table class="invoice-items" cellpadding="0" cellspacing="0">
+                                                            <tbody>
+                                                            {% for datos2 in datos.recuros %}    
+                                                            <tr>
+                                                                
+                                                                <td>{{datos2.nombre}}</td>
+                                                                <td class="alignright">Q {{datos2.precio}}</td>
+                                                                {% endfor %}
+                                                                
+                                                            </tr>
+                                                            
+                                                            <tr class="total">
+                                                                <td class="alignright" width="80%">Total</td>
+                                                                <td class="alignright">Q. {{datos.total}}</td>
+                                                            </tr>
+                                                        </tbody></table>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="content-block">
+                                            <a href="#">View in browser</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="content-block">
+                                            Company Inc. 123 Van Ness, San Francisco 94102
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                    <div class="footer">
+                        <table width="100%">
+                            <tbody><tr>
+                                <td class="aligncenter content-block">Questions? Email <a href="mailto:">support@company.inc</a></td>
+                            </tr>
+                        </tbody></table>
+                    </div></div>
+            </td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+
+{% endfor %}    
+
 {%endblock%}

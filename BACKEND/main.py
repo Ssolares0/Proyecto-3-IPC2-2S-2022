@@ -210,7 +210,22 @@ def AgregarDatos2():
         return(jsonify(mensaje))   
 
    return jsonify( {"ok": True,"MSG":"AGREGADO CON EXITO"})
+
+@app.route('/procesoFacturacion', methods=['POST'])
+
+def procesoFacturacion():
+   facturas = request.get_data()
+   fechaInicio = request.json["fechaInicio"]
+   fechaFinal = request.json["fechaFinal"]
+
+   return jsonify(manage.facturacion(fechaInicio,fechaFinal))
    
+   
+   
+@app.route('/obtenerFactura', methods=['GET'])
+
+def obtenerFactura():
+   return jsonify(manage.obtenerFacturas())
    
                #METODOS GET
 @app.route('/buscarlistarecursos', methods=['GET'])

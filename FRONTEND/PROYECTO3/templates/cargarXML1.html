@@ -13,6 +13,20 @@
 </head>
 <body background="/static/fondobonito.jpg">
 
+    {% if messages %}
+    <ul class="alert alert-primary">
+    {% for message in messages %}
+    <li>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error:
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}¡Bien!:
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}Advertencia:
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}Aviso: {% endif %}
+        {{ message }}
+    </li>
+    {% endfor %}
+    </ul>
+    {% endif %}      
+
 
 <div class="container py-2">
 <form action="/cargarXML1/" method="POST" enctype="multipart/form-data">

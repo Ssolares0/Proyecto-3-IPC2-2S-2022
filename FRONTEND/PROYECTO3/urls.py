@@ -12,6 +12,7 @@ urlpatterns =[
     path('CrearClientes/',views.CrearClientes,name="CrearClientes"),
     path('consultardatos/',views.consultardatos,name="consultardatos"),
     path('facturacion/',views.facturacion,name="facturacion"),
+    path('facturado/',views.facturado,name="facturado"),
     path('infoestudiante/',views.infoestudiante,name="infoestudiante"),
     path('cargarXML1/',views.cargarXML1,name='cargarXML1'),
     path('cargarXML2/',views.cargarXML2,name='cargarXML2'),

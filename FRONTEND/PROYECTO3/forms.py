@@ -48,6 +48,10 @@ class FileFormClientes(forms.Form):
 	fechaInicio = forms.CharField(label="fechaInicio")
 	estado = forms.CharField(label="estado")
 	fechaFinal = forms.CharField(label="fechaFinal")
+
+class FileFormFacturacion(forms.Form):
+	fechaInicio= forms.DateField(label="fechaInicio")
+	fechaFinal= forms.DateField(label="fechaFinal")
 	
 
 
