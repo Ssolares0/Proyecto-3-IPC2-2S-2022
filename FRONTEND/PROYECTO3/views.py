@@ -121,7 +121,7 @@ def ayuda(request):
 
 
 def pdf_view(request):
-    pdf = open(PDF_FILES_FOLDER + 'ProgramaLaboratorioIPC2.pdf', 'rb')
+    pdf = open(PDF_FILES_FOLDER + 'ensayo.pdf', 'rb')
     return FileResponse(pdf)
 
 

@@ -43,50 +43,7 @@ def crearUser():
    nuevouser= (request.json["nombres"], request.json["apellidos"], request.json["username"], request.json["correo"], request.json["contraseña"])
    manage.addUsuarios(request.json["nombres"], request.json["apellidos"], request.json["username"], request.json["correo"], request.json["contraseña"])
 
-   """for x in usuarios:
-        if (x.getUsername() == request.json["username"]):
-            usuariorep = True
-
-   for x in request.json["contraseña"]:
-        if (x == "!") or (x == "@") or (x == "#") or (x == "$") or (
-                x == "%") or (x == "^") or (x == "&") or (x == "*") or (
-                    x == "(") or (x == ")"):
-            caracteres = True
-            print("si")
-
-   for x in request.json["contraseña"]:
-
-        contCaracteres = contCaracteres + 1
-        if contCaracteres >= 8:
-            minimoCarac = True
-
-   if (minimoCarac == True) and (caracteres == True):
-        passval = True
-
-   if (usuariorep == False) and (passval == True):
-        manage.addUsuarios(request.json["nombres"], request.json["apellidos"], request.json["username"], request.json["correo"], request.json["contraseña"])
-        respuesta = jsonify({
-            "error": False,
-            "mensaje": "Cuenta creada satisfactoriamente"
-        })
-        return (respuesta)
-
-   else:
-        if usuariorep == True:
-            respuesta = jsonify({
-                "error": True,
-                "mensaje": "El usuario ya existe!"
-            })
-            return (respuesta)
-
-        if passval == False:
-            respuesta = jsonify({
-                "error":
-                True,
-                "mensaje":
-                "Contrasena no valida: Debe de contener algun caracter y numero"
-            })
-            return (respuesta)"""
+   
 
 
    return jsonify( {"ok": True,"MSG":"USER AGREGADO CON EXITO CON EXITO"})         
